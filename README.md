@@ -20,7 +20,7 @@ And then execute:
 
     $ bundle
 
-Add [Chart.js][] (and [Modernizr][] and [excanvas][] if you need them) to your assets.
+Add [Chart.js][] (and [Modernizr][] and [ExplorerCanvas][] if you need them) to your assets.
 
 Ensure your browsers will display `<figure/>` and `<figcaption/>` correctly.
 
@@ -31,7 +31,7 @@ Each chart type has a corresponding helper for your views.  The helper methods t
 
 ### Charts with multiple datasets
 
-```ruby
+```erb
 <%= line_chart labels, datasets, options %>
 <%= bar_chart labels, datasets, options %>
 <%= radar_chart labels, datasets, options %>
@@ -91,7 +91,7 @@ The Ruby equivalent is:
 
 ### Charts with one dataset
 
-```ruby
+```erb
 <%= polar_chart data, options %>
 <%= pie_chart data, options %>
 <%= doughnut_chart data, options %>
@@ -165,11 +165,11 @@ And in Ruby:
 
 The `options` hash supports the following extra settings:
 
-* `:css_class`: class of the enclosing `<figure/>` - default is `chart`.
-* `:element_id`: id of the `<canvas/>` - default is `chart-n` where `n` is the index of the chart on the page.
-* `:width`: width of the canvas in px - default is `400`.
-* `:height`: height of the canvas in px - default is `400`.
-* `:legend`: an array of names for the datasets.
+* `:css_class` - class of the enclosing `<figure/>` - default is `chart`.
+* `:element_id` - id of the `<canvas/>` - default is `chart-n` where `n` is the 0-based index of the chart on the page.
+* `:width` - width of the canvas in px - default is `400`.
+* `:height` - height of the canvas in px - default is `400`.
+* `:legend` - an array of names for the datasets.
 
 ### Sample output:
 
@@ -187,6 +187,19 @@ The `options` hash supports the following extra settings:
 </figure>
 <script type="text/javascript">
   var initChart = function() {
+    var data = {labels: ["Apples","Bananas","Cherries"], datasets: [{"data":[42,153,...],...}, ...]};
+    var opts = {"scaleFontSize":10};
+    if (!('animation' in opts)) {
+      opts['animation'] = (typeof Modernizr != 'undefined') || Modernizr.canvas;
+    }
+    var ctx = document.getElementById("chart-0").getContext('2d');
+    new Chart(ctx).Bar(data, opts);
+  };
+  if (window.addEventListener) { // W3C standard
+    window.addEventListener('load', initChart, false);
+  }
+  else if (window.attachEvent) { // IE
+    window.attachEvent('onload', initChart);
   }
 </script>
 ```
@@ -217,3 +230,5 @@ Copyright Andrew Stewart, AirBlade Software.  Released under the MIT licence.
   [browsersupport]: http://www.chartjs.org/docs/#generalIssues-browserSupport
   [linechart]: http://www.chartjs.org/docs/#lineChart-exampleUsage
   [piechart]: http://www.chartjs.org/docs/#pieChart-exampleUsage
+  [Modernizr]: http://modernizr.com
+  [ExplorerCanvas]: https://code.google.com/p/explorercanvas
