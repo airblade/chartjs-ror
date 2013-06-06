@@ -62,7 +62,7 @@ module Chartjs
           var data = #{data_for labels, datasets};
           var opts = #{options.to_json};
           if (!('animation' in opts)) {
-            opts['animation'] = (typeof Modernizr != 'undefined') || Modernizr.canvas;
+            opts['animation'] = (typeof Modernizr == 'undefined') || Modernizr.canvas;
           }
           var ctx = document.getElementById(#{element_id.to_json}).getContext('2d');
           new Chart(ctx).#{klass}(data, opts);

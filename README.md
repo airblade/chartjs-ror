@@ -126,7 +126,7 @@ var data = [
 		color: "#584A5E"
 	}
 ]
-new Chart(ctx).PolarArea(data,options);
+new Chart(ctx).Pie(data,options);
 ```
 
 And in Ruby:
@@ -158,12 +158,12 @@ And in Ruby:
 		color: "#584A5E"
 	}
 ]
-<%= polar_area_chart @data %>
+<%= pie_chart @data %>
 ```
 
 ### Options
 
-The `options` hash supports the following extra settings:
+You can put anything in the `options` hash that Chart.js recognises.  It also supports these non-Chart.js settings:
 
 * `:css_class` - class of the enclosing `<figure/>` - default is `chart`.
 * `:element_id` - id of the `<canvas/>` - default is `chart-n` where `n` is the 0-based index of the chart on the page.
@@ -190,7 +190,7 @@ The `options` hash supports the following extra settings:
     var data = {labels: ["Apples","Bananas","Cherries"], datasets: [{"data":[42,153,...],...}, ...]};
     var opts = {"scaleFontSize":10};
     if (!('animation' in opts)) {
-      opts['animation'] = (typeof Modernizr != 'undefined') || Modernizr.canvas;
+      opts['animation'] = (typeof Modernizr == 'undefined') || Modernizr.canvas;
     }
     var ctx = document.getElementById("chart-0").getContext('2d');
     new Chart(ctx).Bar(data, opts);
