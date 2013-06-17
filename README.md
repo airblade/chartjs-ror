@@ -6,6 +6,8 @@ Simplifies using [Chart.js][] in Rails views.
 * Legends for your charts.
 * Renders charts on page load rather than DOMContentReady ([reason][browsersupport]).
 * Animates unless you have Modernizr and it doesn't detect canvas support ([reason][browsersupport]).  You can manually override this.
+* Optional alternative (better?) abscissa scale calculations.
+* Utility method for filling in gaps in integer series.
 
 NOTE: this is Rails 3.0 only at the moment, so pre-asset pipeline.  I plan to upgrade soon.
 
@@ -212,6 +214,11 @@ Each item in the legend array is given two classes:
 * The id value of the canvas.
 
 This lets you style legends in general but override the styles for specific charts.
+
+
+### Scale calculations
+
+The plugin implements its own abscissa scale calculations which I prefer to Chart.js's.  You can opt-in to these calculations by passing `scaleOverride: true` in the `options` hash, without any of the other scale override keys (`scaleSteps`, `scaleStepWidth`, `scaleStartValue`).
 
 
 ## Inspiration

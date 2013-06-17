@@ -56,6 +56,11 @@ module Chartjs
                  ''
                end
 
+      # Alternative scale calculations.
+      if options[:scaleOverride] && !options.has_key?(:scaleSteps)
+        options.merge! ordinate_scale(combined_data(datasets))
+      end
+
       script = javascript_tag do
         <<-END.html_safe
         var initChart = function() {
@@ -85,6 +90,10 @@ module Chartjs
       else
         datasets.to_json
       end
+    end
+
+    def combined_data(datasets)
+      datasets.map { |d| d[:data] || d[:value] }.flatten
     end
 
   end
