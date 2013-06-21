@@ -167,7 +167,7 @@ And in Ruby:
 
 You can put anything in the `options` hash that Chart.js recognises.  It also supports these non-Chart.js settings:
 
-* `:css_class` - class of the enclosing `<figure/>` - default is `chart`.
+* `:class` - class of the enclosing `<figure/>` - default is `chart`.
 * `:element_id` - id of the `<canvas/>` - default is `chart-n` where `n` is the 0-based index of the chart on the page.
 * `:width` - width of the canvas in px - default is `400`.
 * `:height` - height of the canvas in px - default is `400`.
