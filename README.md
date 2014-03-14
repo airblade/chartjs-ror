@@ -9,8 +9,6 @@ Simplifies using [Chart.js][] in Rails views.
 * Optional alternative (better?) abscissa scale calculations.
 * Utility method for filling in gaps in integer series.
 
-NOTE: this is Rails 3.0 only at the moment, so pre-asset pipeline.  I plan to upgrade soon.
-
 
 ## Installation
 
@@ -22,7 +20,14 @@ And then execute:
 
     $ bundle
 
-Add [Chart.js][] (and [Modernizr][] and [ExplorerCanvas][] if you need them) to your assets.
+In your JavaScript manifest, add:
+
+```javascript
+//= require Chart
+//= require excanvas
+```
+
+Add [Modernizr][] if you need it to your app's assets.
 
 Ensure your browsers will display `<figure/>` and `<figcaption/>` correctly.
 

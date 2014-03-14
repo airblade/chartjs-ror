@@ -1,4 +1,4 @@
-require 'chartjs/railtie' if defined?(Rails)
+require 'chartjs/engine'
 require "chartjs/version"
 
 module Chartjs
