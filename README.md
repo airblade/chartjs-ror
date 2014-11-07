@@ -26,7 +26,7 @@ In your JavaScript manifest, add:
 //= require excanvas
 ```
 
-Add [Modernizr][] if you need it to your app's assets.
+You only need [excanvas][ExplorerCanvas] for IE7 and IE8.  Add [Modernizr][] if you need it to your app's assets.
 
 
 ## Usage
@@ -210,6 +210,8 @@ You can put anything in the `options` hash that Chart.js recognises.  It also su
   })();
 </script>
 ```
+
+The Javascript is actually written out on a single line but you get the idea.
 
 
 ### Templates (tooltips and legends)
