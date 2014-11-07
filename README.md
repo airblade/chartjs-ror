@@ -231,7 +231,7 @@ If you don't want a legend, supply `legendTemplate: " "` in the options for your
 
 ### Scale calculations
 
-The plugin implements its own abscissa scale calculations which I prefer to Chart.js's.  You can opt-in to these calculations by passing `scaleOverride: true` in the `options` hash, without any of the other scale override keys (`scaleSteps`, `scaleStepWidth`, `scaleStartValue`).
+The plugin implements its own abscissa scale calculations which I prefer to Chart.js's (see [Chart.js#132][calculations]).  You can opt-in to these calculations by passing `scaleOverride: true` in the `options` hash, without any of the other scale override keys (`scaleSteps`, `scaleStepWidth`, `scaleStartValue`).
 
 
 ## Inspiration
@@ -246,10 +246,11 @@ Copyright Andrew Stewart, AirBlade Software.  Released under the MIT licence.
 
 
   [Chart.js]: http://www.chartjs.org/
-  [Chartkick]: http://ankane.github.io/chartkick/
+  [Chartkick]: https://ankane.github.io/chartkick/
   [browsersupport]: http://www.chartjs.org/docs/#notes-browser-support
   [linechart]: http://www.chartjs.org/docs/#lineChart-exampleUsage
   [piechart]: http://www.chartjs.org/docs/#pieChart-exampleUsage
   [Modernizr]: http://modernizr.com
   [ExplorerCanvas]: https://code.google.com/p/explorercanvas
   [advanced]: http://www.chartjs.org/docs/#advanced-usage-prototype-methods
+  [calculations]: https://github.com/nnnick/Chart.js/issues/132
