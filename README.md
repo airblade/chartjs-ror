@@ -218,7 +218,7 @@ The Javascript is actually written out on a single line but you get the idea.
 
 If you specify a custom template, e.g. in `legendTemplate` or `tooltipTemplate`, you must escape opening tags in the Javascript-template string, i.e. use `<%%= value %>` instead of `<%= value %>`.
 
-You need to add an escape `%` character for each level of rendering.  For exampe:
+You need to add an escape `%` character for each level of rendering.  For example:
 
 - If your view calls the chart helper directly, use `<%%= value %>`.
 - If your view renders a partial which calls the chart helper, use `<%%%= value %>`.
