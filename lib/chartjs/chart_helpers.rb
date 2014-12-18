@@ -66,10 +66,12 @@ module Chartjs
           /* W3C standard */
           if (window.addEventListener) {
             window.addEventListener("load", initChart, false);
+            window.addEventListener("page:load", initChart);
           }
           /* IE */
           else if (window.attachEvent) {
             window.attachEvent("onload", initChart);
+            window.attachEvent("page:load", initChart);
           }
         })();
         END
