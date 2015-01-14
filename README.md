@@ -178,12 +178,6 @@ If you don't want a legend, supply `legendTemplate: " "` in the options for your
 The plugin implements its own abscissa scale calculations which I prefer to Chart.js's (see [Chart.js#132][calculations]).  You can opt-in to these calculations by passing `scaleOverride: true` in the `options` hash, without any of the other scale override keys (`scaleSteps`, `scaleStepWidth`, `scaleStartValue`).
 
 
-## Inspiration
-
-* [Chart.js][] (obviously)
-* [Chartkick][]
-
-
 ## Intellectual Property
 
 Copyright Andrew Stewart, AirBlade Software.  Released under the MIT licence.
