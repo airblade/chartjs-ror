@@ -52,10 +52,12 @@ module Chartjs
           /* W3C standard */
           if (window.addEventListener) {
             window.addEventListener("load", initChart, false);
+            document.addEventListener("page:load", initChart, false);
           }
           /* IE */
           else if (window.attachEvent) {
             window.attachEvent("onload", initChart);
+            document.attachEvent("page:load", initChart);
           }
         })();
         END
