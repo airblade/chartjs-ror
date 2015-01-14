@@ -25,6 +25,14 @@ module Chartjs
         options.merge! ordinate_scale(combined_data(data))
       end
 
+      generate_legend = options.delete :generateLegend
+      legend = <<-END
+        var legend = chart.generateLegend();
+        var legendHolder = document.createElement("div");
+        legendHolder.innerHTML = legend;
+        canvas.parentNode.insertBefore(legendHolder.firstChild, canvas.nextSibling);
+      END
+
       script = javascript_tag do
         <<-END.squish.html_safe
         (function() {
@@ -39,12 +47,7 @@ module Chartjs
             var chart = new Chart(ctx).#{klass}(data, opts);
             window.Chart[#{element_id.to_json}] = chart;
 
-            var legend = chart.generateLegend();
-            if (legend.trim().length > 0) {
-              var legendHolder = document.createElement("div");
-              legendHolder.innerHTML = legend;
-              canvas.parentNode.insertBefore(legendHolder.firstChild, canvas.nextSibling);
-            }
+            #{legend if generate_legend}
           };
           /* W3C standard */
           if (window.addEventListener) {

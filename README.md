@@ -111,10 +111,11 @@ options = {}
 
 You can put anything in the `options` hash that Chart.js recognises.  It also supports these non-Chart.js settings:
 
-* `:class`      - class of the enclosing `<figure/>` - default is `chart`.
-* `:element_id` - id of the `<canvas/>` - default is `chart-n` where `n` is the 0-based index of the chart on the page.
-* `:width`      - width of the canvas in px - default is `400`.
-* `:height`     - height of the canvas in px - default is `400`.
+* `:class`          - class of the enclosing `<figure/>` - default is `chart`.
+* `:element_id`     - id of the `<canvas/>` - default is `chart-n` where `n` is the 0-based index of the chart on the page.
+* `:width`          - width of the canvas in px - default is `400`.
+* `:height`         - height of the canvas in px - default is `400`.
+* `:generateLegend` - whether or not to generate a legend - default is `false`.
 
 ### Sample output:
 
@@ -137,11 +138,9 @@ You can put anything in the `options` hash that Chart.js recognises.  It also su
       window.Chart["chart-0"] = chart;
 
       var legend = chart.generateLegend();
-      if (legend.trim().length > 0) {
-        var legendHolder = document.createElement("div");
-        legendHolder.innerHTML = legend;
-        canvas.parentNode.insertBefore(legendHolder.firstChild, canvas.nextSibling);
-      }
+      var legendHolder = document.createElement("div");
+      legendHolder.innerHTML = legend;
+      canvas.parentNode.insertBefore(legendHolder.firstChild, canvas.nextSibling);
     };
     if (window.addEventListener) {
       window.addEventListener('load', initChart, false);
@@ -168,9 +167,7 @@ You need to add an escape `%` character for each level of rendering.  For exampl
 
 ### Legend
 
-A legend will be rendered using `chart.generateLegend()` ([docs][advanced]).
-
-If you don't want a legend, supply `legendTemplate: " "` in the options for your chart.  For some reason an empty string causes an exception inside Chart.js so use a single space.
+If you pass the option `generateLegend: true`, a legend will be rendered using `chart.generateLegend()` ([docs][advanced]).
 
 
 ### Scale calculations
