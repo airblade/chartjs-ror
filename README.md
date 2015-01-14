@@ -156,7 +156,7 @@ You can put anything in the `options` hash that Chart.js recognises.  It also su
 The Javascript is actually written out on a single line but you get the idea.
 
 
-### Templates (tooltips and legends)
+### Templates (tooltips and legends) and Rails views
 
 If you specify a custom template, e.g. in `legendTemplate` or `tooltipTemplate`, you must escape opening tags in the Javascript-template string, i.e. use `<%%= value %>` instead of `<%= value %>`.
 
