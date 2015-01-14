@@ -33,36 +33,44 @@ You only need [excanvas][ExplorerCanvas] for IE7 and IE8.  Add [Modernizr][] if 
 
 Each chart type has a corresponding helper for your views.  The helper methods take the same arguments as their Javascript counterparts.  The `options` are always optional.
 
-### Charts with multiple datasets
 
 ```erb
-<%= line_chart labels, datasets, options %>
-<%= bar_chart labels, datasets, options %>
-<%= radar_chart labels, datasets, options %>
+<%= line_chart     data, options %>
+<%= bar_chart      data, options %>
+<%= radar_chart    data, options %>
+<%= polar_chart    data, options %>
+<%= pie_chart      data, options %>
+<%= doughnut_chart data, options %>
 ```
 
 For example, to render a [line chart][linechart] in Javascript:
 
 ```javascript
 var data = {
-	labels : ["January","February","March","April","May","June","July"],
-	datasets : [
-		{
-			fillColor : "rgba(220,220,220,0.5)",
-			strokeColor : "rgba(220,220,220,1)",
-			pointColor : "rgba(220,220,220,1)",
-			pointStrokeColor : "#fff",
-			data : [65,59,90,81,56,55,40]
-		},
-		{
-			fillColor : "rgba(151,187,205,0.5)",
-			strokeColor : "rgba(151,187,205,1)",
-			pointColor : "rgba(151,187,205,1)",
-			pointStrokeColor : "#fff",
-			data : [28,48,40,19,96,27,100]
-		}
-	]
-}
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 86, 27, 90]
+        }
+    ]
+};
 var options = {};
 new Chart(ctx).Line(data,options);
 ```
@@ -70,99 +78,33 @@ new Chart(ctx).Line(data,options);
 The Ruby equivalent is:
 
 ```ruby
-@data = {
-	labels: ["January","February","March","April","May","June","July"],
-	datasets: [
-		{
-			fillColor: "rgba(220,220,220,0.5)",
-			strokeColor: "rgba(220,220,220,1)",
-			pointColor: "rgba(220,220,220,1)",
-			pointStrokeColor: "#fff",
-			data: [65,59,90,81,56,55,40]
-		},
-		{
-			fillColor: "rgba(151,187,205,0.5)",
-			strokeColor: "rgba(151,187,205,1)",
-			pointColor: "rgba(151,187,205,1)",
-			pointStrokeColor: "#fff",
-			data: [28,48,40,19,96,27,100]
-		}
-	]
+data = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 86, 27, 90]
+        }
+    ]
 }
-@options = {}
-<%= line_chart @data, @options %>
-```
-
-### Charts with one dataset
-
-```erb
-<%= polar_chart data, options %>
-<%= pie_chart data, options %>
-<%= doughnut_chart data, options %>
-```
-
-For example, to render a [pie chart][piechart] in Javascript:
-
-```javascript
-var data = [
-	{
-		value : 30,
-		color: "#D97041"
-	},
-	{
-		value : 90,
-		color: "#C7604C"
-	},
-	{
-		value : 24,
-		color: "#21323D"
-	},
-	{
-		value : 58,
-		color: "#9D9B7F"
-	},
-	{
-		value : 82,
-		color: "#7D4F6D"
-	},
-	{
-		value : 8,
-		color: "#584A5E"
-	}
-]
-new Chart(ctx).Pie(data,options);
-```
-
-And in Ruby:
-
-```ruby
-@data = [
-	{
-		value: 30,
-		color: "#D97041"
-	},
-	{
-		value: 90,
-		color: "#C7604C"
-	},
-	{
-		value: 24,
-		color: "#21323D"
-	},
-	{
-		value: 58,
-		color: "#9D9B7F"
-	},
-	{
-		value: 82,
-		color: "#7D4F6D"
-	},
-	{
-		value: 8,
-		color: "#584A5E"
-	}
-]
-<%= pie_chart @data %>
+options = {}
+<%= line_chart data, options %>
 ```
 
 ### Options

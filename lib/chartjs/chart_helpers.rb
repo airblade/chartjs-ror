@@ -1,33 +1,16 @@
 module Chartjs
   module ChartHelpers
 
-    def line_chart(labels, datasets, options = {})
-      chart 'Line', labels, datasets, options
-    end
-
-    def bar_chart(labels, datasets, options = {})
-      chart 'Bar', labels, datasets, options
-    end
-
-    def radar_chart(labels, datasets, options = {})
-      chart 'Radar', labels, datasets, options
-    end
-
-    def polar_area_chart(data, options = {})
-      chart 'PolarArea', nil, data, options
-    end
-
-    def pie_chart(data, options = {})
-      chart 'Pie', nil, data, options
-    end
-
-    def doughnut_chart(data, options = {})
-      chart 'Doughnut', nil, data, options
+    %w[ Line Bar Radar PolarArea Pie Doughnut ].each do |type|
+      camel_type = type.gsub(/(\w)([A-Z])/, '\1_\2').downcase
+      define_method "#{camel_type}_chart" do |data, options = {}|    # def polar_area_chart(data, options = {})
+        chart type, data, options                                    #   chart 'PolarArea', data, options
+      end                                                            # end
     end
 
     private
 
-    def chart(klass, labels, datasets, options)
+    def chart(klass, data, options)
       @chart_id ||= -1
       element_id = options.delete(:id)     || "chart-#{@chart_id += 1}"
       css_class  = options.delete(:class)  || 'chart'
@@ -39,14 +22,14 @@ module Chartjs
 
       # Alternative scale calculations.
       if options[:scaleOverride] && !options.has_key?(:scaleSteps)
-        options.merge! ordinate_scale(combined_data(datasets))
+        options.merge! ordinate_scale(combined_data(data))
       end
 
       script = javascript_tag do
         <<-END.squish.html_safe
         (function() {
           var initChart = function() {
-            var data = #{data_for labels, datasets};
+            var data = #{data.to_json};
             var opts = #{options.to_json};
             if (!("animation" in opts)) {
               opts["animation"] = (typeof Modernizr == "undefined") || Modernizr.canvas;
@@ -78,16 +61,12 @@ module Chartjs
       content_tag(:figure, canvas, class: css_class) + script
     end
 
-    def data_for(labels, datasets)
-      if labels
-        "{labels: #{labels.to_json}, datasets: #{datasets.to_json}}"
+    def combined_data(data)
+      if data.is_a? Array
+        data.map { |datum| datum[:value] }
       else
-        datasets.to_json
+        data[:datasets].flat_map { |dataset| dataset[:data] }
       end
-    end
-
-    def combined_data(datasets)
-      datasets.map { |d| d[:data] || d[:value] }.flatten
     end
 
   end
