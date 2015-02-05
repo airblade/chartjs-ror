@@ -57,7 +57,7 @@ module Chartjs
           if (window.addEventListener) {
             window.addEventListener("load", initChart, false);
             document.addEventListener("page:load", initChart, false);
-            initChart();
+            document.addEventListener("ajax:load", initChart, false);
           }
           /* IE */
           else if (window.attachEvent) {
