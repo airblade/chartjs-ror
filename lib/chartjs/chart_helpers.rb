@@ -36,12 +36,16 @@ module Chartjs
       script = javascript_tag do
         <<-END.squish.html_safe
         (function() {
+        
           var initChart = function() {
             var data = #{data.to_json};
             var opts = #{options.to_json};
             if (!("animation" in opts)) {
               opts["animation"] = (typeof Modernizr == "undefined") || Modernizr.canvas;
             }
+            
+            chart && chart.destroy();
+            
             var canvas = document.getElementById(#{element_id.to_json});
             var ctx = canvas.getContext('2d');
             var chart = new Chart(ctx).#{klass}(data, opts);
@@ -53,6 +57,7 @@ module Chartjs
           if (window.addEventListener) {
             window.addEventListener("load", initChart, false);
             document.addEventListener("page:load", initChart, false);
+            initChart();
           }
           /* IE */
           else if (window.attachEvent) {
