@@ -55,8 +55,8 @@ module Chartjs
           };
           /* W3C standard */
           if (window.addEventListener) {
-          /*  window.addEventListener("load", initChart, false);
-            document.addEventListener("page:load", initChart, false);*/
+           window.addEventListener("load", initChart, false);
+            document.addEventListener("page:load", initChart, false);
             initChart();
           }
           /* IE */
