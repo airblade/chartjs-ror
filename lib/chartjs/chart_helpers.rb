@@ -44,7 +44,7 @@ module Chartjs
               opts["animation"] = (typeof Modernizr == "undefined") || Modernizr.canvas;
             }
             
-            chart && chart.destroy();
+           // chart && chart.destroy();
             
             var canvas = document.getElementById(#{element_id.to_json});
             var ctx = canvas.getContext('2d');
@@ -53,11 +53,12 @@ module Chartjs
 
             #{legend if generate_legend}
           };
+           initChart();
           /* W3C standard */
           if (window.addEventListener) {
            window.addEventListener("load", initChart, false);
             document.addEventListener("page:load", initChart, false);
-            initChart();
+           
           }
           /* IE */
           else if (window.attachEvent) {
