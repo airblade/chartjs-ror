@@ -35,7 +35,7 @@ module Chartjs
 
       script = javascript_tag do
         <<-END.squish.html_safe
-        $(function() {
+        (function() {
         
           var initChart = function() {
             var data = #{data.to_json};
@@ -44,7 +44,7 @@ module Chartjs
               opts["animation"] = (typeof Modernizr == "undefined") || Modernizr.canvas;
             }
             
-          
+            canvas && canvas.destroy();
             
             var canvas = document.getElementById(#{element_id.to_json});
             var ctx = canvas.getContext('2d');
@@ -53,18 +53,9 @@ module Chartjs
 
             #{legend if generate_legend}
           };
-           initChart();
-          /* W3C standard */
-          if (window.addEventListener) {
-           window.addEventListener("load", initChart, false);
-            document.addEventListener("page:load", initChart, false);
-           
-          }
-          /* IE */
-          else if (window.attachEvent) {
-            window.attachEvent("onload", initChart);
-            document.attachEvent("page:load", initChart);
-          }
+          
+          initChart();
+         
         })();
         END
       end
