@@ -9,6 +9,11 @@ Simplifies using [Chart.js][] in Rails views.
 * Utility method for filling in gaps in integer series.
 
 
+## Current Chart.js version
+
+This gem includes [Chart.js v1.0.1](https://github.com/nnnick/Chart.js/tree/v1.0.1).
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
