@@ -44,7 +44,7 @@ module Chartjs
               opts["animation"] = (typeof Modernizr == "undefined") || Modernizr.canvas;
             }
             
-           // chart && chart.destroy();
+          
             
             var canvas = document.getElementById(#{element_id.to_json});
             var ctx = canvas.getContext('2d');
