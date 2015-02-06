@@ -35,7 +35,7 @@ module Chartjs
 
       script = javascript_tag do
         <<-END.squish.html_safe
-        (function() {
+        $(function() {
         
           var initChart = function() {
             var data = #{data.to_json};
@@ -57,7 +57,7 @@ module Chartjs
           if (window.addEventListener) {
             window.addEventListener("load", initChart, false);
             document.addEventListener("page:load", initChart, false);
-            document.addEventListener("ajaxSuccess", initChart, false);
+            $(document).on('ajaxSuccess', function() { initChart } )
           }
           /* IE */
           else if (window.attachEvent) {
