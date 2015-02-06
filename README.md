@@ -5,8 +5,8 @@ Simplifies using [Chart.js][] in Rails views.
 * All of Chart.js's features via one line of Ruby.
 * Renders charts on page load rather than DOMContentReady ([reason][browsersupport]).
 * Animates unless you have Modernizr and it doesn't detect canvas support ([reason][browsersupport]).  You can manually override this.
-* Optional alternative (better?) abscissa scale calculations.
-* Utility method for filling in gaps in integer series.
+* Optional alternative abscissa scale calculations (see [Chart.js#132][calculations]).
+* Optional utility method for filling in gaps in integer series.
 
 
 ## Current Chart.js version
