@@ -37,6 +37,8 @@ module Chartjs
         <<-END.squish.html_safe
         (function() {
           var initChart = function() {
+            window.Chart && window.Chart[#{element_id.to_json}] && window.Chart[#{element_id.to_json}].destroy();
+
             var data = #{data.to_json};
             var opts = #{options.to_json};
             if (!("animation" in opts)) {
