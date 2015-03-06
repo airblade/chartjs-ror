@@ -40,12 +40,12 @@ Each chart type has a corresponding helper for your views.  The helper methods t
 
 
 ```erb
-<%= line_chart     data, options %>
-<%= bar_chart      data, options %>
-<%= radar_chart    data, options %>
-<%= polar_chart    data, options %>
-<%= pie_chart      data, options %>
-<%= doughnut_chart data, options %>
+<%= chartjs_line_chart     	data, options %>
+<%= chartjs_bar_chart      	data, options %>
+<%= chartjs_radar_chart    	data, options %>
+<%= chartjs_polar_area_chart    data, options %>
+<%= chartjs_pie_chart      	data, options %>
+<%= chartjs_doughnut_chart 	data, options %>
 ```
 
 For example, to render a [line chart][linechart] in Javascript:
