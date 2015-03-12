@@ -3,9 +3,9 @@ module Chartjs
 
     %w[ Line Bar Radar PolarArea Pie Doughnut ].each do |type|
       camel_type = type.gsub(/(\w)([A-Z])/, '\1_\2').downcase
-      define_method "#{camel_type}_chart" do |data, options = {}|    # def polar_area_chart(data, options = {})
-        chart type, data, options                                    #   chart 'PolarArea', data, options
-      end                                                            # end
+      define_method "chartjs_#{camel_type}_chart" do |data, options = {}|    # def chartjs_polar_area_chart(data, options = {})
+        chart type, data, options                                            #   chart 'PolarArea', data, options
+      end                                                                    # end
     end
 
     private
