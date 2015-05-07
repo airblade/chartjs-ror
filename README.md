@@ -135,7 +135,7 @@ options = {}
 You can put anything in the `options` hash that Chart.js recognises.  It also supports these non-Chart.js settings:
 
 * `:class`          - class of the enclosing `<figure/>` - default is `chart`.
-* `:element_id`     - id of the `<canvas/>` - default is `chart-n` where `n` is the 0-based index of the chart on the page.
+* `:id`             - id of the `<canvas/>` - default is `chart-n` where `n` is the 0-based index of the chart on the page.
 * `:width`          - width of the canvas in px - default is `400`.
 * `:height`         - height of the canvas in px - default is `400`.
 * `:generateLegend` - whether or not to generate a legend - default is `false`.
