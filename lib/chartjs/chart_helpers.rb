@@ -40,7 +40,11 @@ module Chartjs
             window.Chart && window.Chart[#{element_id.to_json}] && window.Chart[#{element_id.to_json}].destroy();
 
             var data = #{data.to_json};
-            var opts = #{options.to_json};
+
+            var opts = #{options.reject { |k,_| ['onAnimationComplete', 'onAnimationProgress'].include? k }.to_json};
+            opts["onAnimationComplete"] = #{options[:onAnimationComplete] || 'function(){}'};
+            opts["onAnimationProgress"] = #{options[:onAnimationProgress] || 'function(){}'};
+
             if (!("animation" in opts)) {
               opts["animation"] = (typeof Modernizr == "undefined") || Modernizr.canvas;
             }
