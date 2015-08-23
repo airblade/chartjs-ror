@@ -165,14 +165,7 @@ You can put anything in the `options` hash that Chart.js recognises.  It also su
       legendHolder.innerHTML = legend;
       canvas.parentNode.insertBefore(legendHolder.firstChild, canvas.nextSibling);
     };
-    if (window.addEventListener) {
-      window.addEventListener("load", initChart, false);
-      document.addEventListener("page:load", initChart, false);
-    }
-    else if (window.attachEvent) {
-      window.attachEvent("onload", initChart);
-      document.attachEvent("page:load", initChart);
-    }
+	initChart();
   })();
 </script>
 ```
