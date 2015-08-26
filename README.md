@@ -3,7 +3,6 @@
 Simplifies using [Chart.js][] in Rails views.
 
 * All of Chart.js's features via one line of Ruby.
-* Renders charts on page load rather than DOMContentReady ([reason][browsersupport]).
 * Animates unless you have Modernizr and it doesn't detect canvas support ([reason][browsersupport]).  You can manually override this.
 * Optional alternative abscissa scale calculations (see [Chart.js#132][calculations]).
 * Optional utility method for filling in gaps in integer series.
@@ -165,13 +164,16 @@ You can put anything in the `options` hash that Chart.js recognises.  It also su
       legendHolder.innerHTML = legend;
       canvas.parentNode.insertBefore(legendHolder.firstChild, canvas.nextSibling);
     };
-    if (window.addEventListener) {
-      window.addEventListener("load", initChart, false);
-      document.addEventListener("page:load", initChart, false);
+    if (typeof Chart !== "undefined" && Chart !== null) {
+      initChart();
     }
-    else if (window.attachEvent) {
-      window.attachEvent("onload", initChart);
-      document.attachEvent("page:load", initChart);
+    else {
+      if (window.addEventListener) {
+        window.addEventListener("load", initChart, false);
+      }
+      else if (window.attachEvent) {
+        window.attachEvent("onload", initChart);
+      }
     }
   })();
 </script>
