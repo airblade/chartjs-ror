@@ -51,7 +51,7 @@ If you don't want these helpers – perhaps they clash with other methods in you
 
 ```ruby
 # config/initializers/chartjs.rb
-Chartjs.no_confict!
+Chartjs.no_conflict!
 ```
 
 You can use these helpers instead:
