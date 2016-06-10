@@ -41,15 +41,15 @@ Each chart type has a corresponding helper for your views.  The helper methods t
 
 
 ```erb
-<%= line_chart       data, options %>
-<%= bar_chart        data, options %>
+<%= line_chart           data, options %>
+<%= bar_chart            data, options %>
 <%= horizontal_bar_chart data, options %>
-<%= radar_chart      data, options %>
-<%= polar_area_chart data, options %>
-<%= pie_chart        data, options %>
-<%= doughnut_chart   data, options %>
-<%= bubble_chart     data, options %>
-<%= scatter_chart    data, options %>
+<%= radar_chart          data, options %>
+<%= polar_area_chart     data, options %>
+<%= pie_chart            data, options %>
+<%= doughnut_chart       data, options %>
+<%= bubble_chart         data, options %>
+<%= scatter_chart        data, options %>
 ```
 
 If you don't want these helpers – perhaps they clash with other methods in your views – add this initializer to your app:
@@ -62,15 +62,15 @@ Chartjs.no_conflict!
 Then you can use these helpers instead:
 
 ```erb
-<%= chartjs_line_chart       data, options %>
-<%= chartjs_bar_chart        data, options %>
+<%= chartjs_line_chart           data, options %>
+<%= chartjs_bar_chart            data, options %>
 <%= chartjs_horizontal_bar_chart data, options %>
-<%= chartjs_radar_chart      data, options %>
-<%= chartjs_polar_area_chart data, options %>
-<%= chartjs_pie_chart        data, options %>
-<%= chartjs_doughnut_chart   data, options %>
-<%= chartjs_bubble_chart     data, options %>
-<%= chartjs_scatter_chart    data, options %>
+<%= chartjs_radar_chart          data, options %>
+<%= chartjs_polar_area_chart     data, options %>
+<%= chartjs_pie_chart            data, options %>
+<%= chartjs_doughnut_chart       data, options %>
+<%= chartjs_bubble_chart         data, options %>
+<%= chartjs_scatter_chart        data, options %>
 ```
 
 For example, to render a [line chart][linechart] in Javascript:
