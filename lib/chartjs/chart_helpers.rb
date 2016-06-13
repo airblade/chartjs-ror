@@ -1,7 +1,7 @@
 module Chartjs
   module ChartHelpers
 
-    CHART_TYPES = %w[ bar bubble doughnut horizontal_bar line polar_area radar scatter ]
+    CHART_TYPES = %w[ bar bubble doughnut horizontal_bar line pie polar_area radar scatter ]
 
     module Explicit
       CHART_TYPES.each do |type|
