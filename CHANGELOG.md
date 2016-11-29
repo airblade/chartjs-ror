@@ -1,9 +1,15 @@
 # CHANGELOG
 
-
-## Unreleased
+## 3.1.0 - 2016-11-29
 
 - Add CHANGELOG.
+- Use Chart.js v2.4.0
+
+**WARNING**: Breaking changes: #3356 The default aspect ratio is now correctly
+applied, meaning that polar, doughnut and radar charts are now rendered with an
+aspect ratio of 1 (square). The old behavior can be obtained by globally changing
+the default aspectRatio for each chart type (e.g.
+Chart.defaults.doughnut.aspectRatio = 2).
 
 
 ## 3.0.2 - 2016-06-13
@@ -81,4 +87,3 @@
 ## 1.0.0 - 2013-06-16
 
 - First release.
-
