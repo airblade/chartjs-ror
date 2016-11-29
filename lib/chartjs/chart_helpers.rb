@@ -41,8 +41,8 @@ module Chartjs
             var ctx = document.getElementById(#{element_id.to_json});
             var chart = new Chart(ctx, {
               type:    "#{camel_case type}",
-              data:    #{data.to_json},
-              options: #{options.to_json.gsub /"(function.*?})"/, '\1'}
+              data:    #{to_javascript_string data},
+              options: #{to_javascript_string options}
             });
           };
 
@@ -71,5 +71,30 @@ module Chartjs
       string.sub(/_([a-z])/) { $1.upcase }
     end
 
+    def to_javascript_string(element)
+      case
+      when element.is_a?(Hash)
+        hash_elements = []
+        element.each do |key, value|
+          hash_elements << camel_case(key.to_s) + ":" + to_javascript_string(value)
+        end
+        return "{" + hash_elements.join(",") + "}"
+      when element.is_a?(Array)
+        array_elements = []
+        element.each do |value|
+          array_elements << to_javascript_string(value)
+        end
+        return "[" + array_elements.join(",") + "]"
+      when element.is_a?(String)
+        if element.match(/^\s*function.*}\s*$/m)
+          # Raw copy function definitions to the output without surrounding quotes nor newline chars
+          return element.gsub("\n", " ")
+        else
+          return element.to_json
+        end
+      else
+        return element.to_s
+      end
+    end
   end
 end
