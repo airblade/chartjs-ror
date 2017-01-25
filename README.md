@@ -5,7 +5,7 @@ Simplifies using [Chart.js][] in Rails views.
 
 ## Current Chart.js version
 
-This gem includes [Chart.js v2.2.0](https://github.com/chartjs/Chart.js/tree/v2.2.0).
+This gem includes [Chart.js v2.3.0](https://github.com/chartjs/Chart.js/tree/v2.3.0).
 
 
 ## Installation
