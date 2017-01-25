@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## Unreleased
+
+- Use Chart.js v2.4.0.
+
+
 ## 3.2.0 - 2017-01-25
 
 - Use Chart.js v2.3.0.
