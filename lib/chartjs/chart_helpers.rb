@@ -1,3 +1,5 @@
+require 'json'
+
 module Chartjs
   module ChartHelpers
 
