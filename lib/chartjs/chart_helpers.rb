@@ -76,7 +76,7 @@ module Chartjs
       when element.is_a?(Hash)
         hash_elements = []
         element.each do |key, value|
-          hash_elements << camel_case(key.to_s) + ":" + to_javascript_string(value)
+          hash_elements << camel_case(key.to_s).to_json + ":" + to_javascript_string(value)
         end
         return "{" + hash_elements.join(",") + "}"
       when element.is_a?(Array)
@@ -92,8 +92,10 @@ module Chartjs
         else
           return element.to_json
         end
-      else
+      when element.is_a?(BigDecimal)
         return element.to_s
+      else
+        return element.to_json
       end
     end
   end
