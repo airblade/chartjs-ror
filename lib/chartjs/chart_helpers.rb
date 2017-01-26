@@ -78,24 +78,24 @@ module Chartjs
         element.each do |key, value|
           hash_elements << camel_case(key.to_s).to_json + ":" + to_javascript_string(value)
         end
-        return "{" + hash_elements.join(",") + "}"
+        "{" + hash_elements.join(",") + "}"
       when Array
         array_elements = []
         element.each do |value|
           array_elements << to_javascript_string(value)
         end
-        return "[" + array_elements.join(",") + "]"
+        "[" + array_elements.join(",") + "]"
       when String
         if element.match(/^\s*function.*}\s*$/m)
           # Raw copy function definitions to the output without surrounding quotes nor newline chars
-          return element.gsub("\n", " ")
+          element.gsub("\n", " ")
         else
-          return element.to_json
+          element.to_json
         end
       when BigDecimal
-        return element.to_s
+        element.to_s
       else
-        return element.to_json
+        element.to_json
       end
     end
 
