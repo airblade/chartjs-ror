@@ -68,7 +68,7 @@ module Chartjs
 
     # polar_area -> polarArea
     def camel_case(string)
-      string.sub(/_([a-z])/) { $1.upcase }
+      string.gsub(/_([a-z])/) { $1.upcase }
     end
 
     def to_javascript_string(element)
