@@ -125,6 +125,31 @@ options = { ... }
 <%= line_chart data, options %>
 ```
 
+You can also use underscored symbols for keys, instead of the camelcase versions.
+They will be converted to their lower camelcase counterparts on output.
+
+```ruby
+data = {
+  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  datasets: [
+    {
+        label: "My First dataset",
+        background_color: "rgba(220,220,220,0.2)",
+        border_color: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55, 40]
+    },
+    {
+        label: "My Second dataset",
+        background_color: "rgba(151,187,205,0.2)",
+        border_color: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27, 90]
+    }
+  ]
+}
+options = { ... }
+<%= line_chart data, options %>
+```
+
 ### Options
 
 You can put anything in the `options` hash that Chart.js recognises.  To pass a JavaScript function as an option value, wrap it in quotation marks to make it a string.
