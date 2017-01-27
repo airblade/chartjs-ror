@@ -36,8 +36,6 @@ module Chartjs
       canvas = content_tag :canvas, '', id: element_id, class: css_class, width: width, height: height
 
       script = javascript_tag do
-        # Ensure option string values which are actually JavaScript functions
-        # are treated as functions.
         <<-END.squish.html_safe
         (function() {
           var initChart = function() {
