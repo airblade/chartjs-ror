@@ -1,4 +1,5 @@
 require 'json'
+require 'bigdecimal'
 
 module Chartjs
   module ChartHelpers
