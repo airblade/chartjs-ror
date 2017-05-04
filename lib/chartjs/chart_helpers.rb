@@ -37,14 +37,19 @@ module Chartjs
 
       script = javascript_tag do
         <<-END.squish.html_safe
-        (function() {
+        $(document).on('turbolinks:load', function() {
           var initChart = function() {
             var ctx = document.getElementById(#{element_id.to_json});
-            var chart = new Chart(ctx, {
-              type:    "#{camel_case type}",
-              data:    #{to_javascript_string data},
-              options: #{to_javascript_string options}
-            });
+            if(ctx){
+              if(ctx.chart){
+                ctx.chart.destroy();
+              }
+              ctx.chart = new Chart(ctx, {
+                type:    "#{camel_case type}",
+                data:    #{to_javascript_string data},
+                options: #{to_javascript_string options}
+              });
+            }
           };
 
           if (typeof Chart !== "undefined" && Chart !== null) {
@@ -60,7 +65,7 @@ module Chartjs
               window.attachEvent("onload", initChart);
             }
           }
-        })();
+        });
         END
       end
 
