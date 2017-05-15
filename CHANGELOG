@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## Unreleased
+
+- Use Chart.js v2.5.0.
+
+
 ## 3.3.1 - 2017-01-27
 
 - Improve conversion of data and options hashes to JavaScript.
