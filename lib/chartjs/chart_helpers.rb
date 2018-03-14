@@ -43,8 +43,8 @@ module Chartjs
           var initChart = function() {
             var ctx = document.getElementById(#{element_id.to_json});
             var chart = new Chart(ctx, {
-              type:    "#{camel_case type}",
-              data:    #{to_javascript_string data},
+              type: "#{camel_case type}",
+              data: #{to_javascript_string data},
               opts: #{to_javascript_string opts}
             });
           };
