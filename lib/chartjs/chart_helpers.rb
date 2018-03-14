@@ -27,11 +27,13 @@ module Chartjs
     private
 
     def chart(type, data, options)
+      opts = options.dup
+
       @chart_id ||= -1
-      element_id = options.delete(:id)     || "chart-#{@chart_id += 1}"
-      css_class  = options.delete(:class)  || 'chart'
-      width      = options.delete(:width)  || '400'
-      height     = options.delete(:height) || '400'
+      element_id = opts.delete(:id)     || "chart-#{@chart_id += 1}"
+      css_class  = opts.delete(:class)  || 'chart'
+      width      = opts.delete(:width)  || '400'
+      height     = opts.delete(:height) || '400'
 
       canvas = content_tag :canvas, '', id: element_id, class: css_class, width: width, height: height
 
@@ -43,7 +45,7 @@ module Chartjs
             var chart = new Chart(ctx, {
               type:    "#{camel_case type}",
               data:    #{to_javascript_string data},
-              options: #{to_javascript_string options}
+              opts: #{to_javascript_string opts}
             });
           };
 

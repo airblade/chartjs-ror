@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## Unreleased
+
+- Do not modify options.
+
+
 ## 3.6.2 - 2018-03-14
 
 - Use Chart.js v2.7.2.
