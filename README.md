@@ -170,7 +170,7 @@ You can also use these non-Chart.js settings:
   //<![CDATA[
   (function() {
     var initChart = function() {
-      var ctx = document.getElemenyById("chart-0");
+      var ctx = document.getElementById("chart-0");
       var chart = new Chart(ctx, {
         type: "Line",
         data = { ... };
