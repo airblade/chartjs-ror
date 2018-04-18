@@ -45,7 +45,7 @@ module Chartjs
             var chart = new Chart(ctx, {
               type:    "#{camel_case type}",
               data:    #{to_javascript_string data},
-              opts: #{to_javascript_string opts}
+              options: #{to_javascript_string opts}
             });
           };
 
