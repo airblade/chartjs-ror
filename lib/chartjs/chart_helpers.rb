@@ -37,7 +37,7 @@ module Chartjs
 
       canvas = content_tag :canvas, '', id: element_id, class: css_class, width: width, height: height
 
-      script = javascript_tag do
+      script = javascript_tag(nonce: true) do
         <<-END.squish.html_safe
         (function() {
           var initChart = function() {
