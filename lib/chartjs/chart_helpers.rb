@@ -37,15 +37,15 @@ module Chartjs
 
       canvas = content_tag :canvas, '', id: element_id, class: css_class, width: width, height: height
 
-      script = javascript_tag do
+      script = javascript_tag(nonce: true) do
         <<-END.squish.html_safe
         (function() {
           var initChart = function() {
             var ctx = document.getElementById(#{element_id.to_json});
             var chart = new Chart(ctx, {
-              type: "#{camel_case type}",
-              data: #{to_javascript_string data},
-              opts: #{to_javascript_string opts}
+              type:    "#{camel_case type}",
+              data:    #{to_javascript_string data},
+              options: #{to_javascript_string opts}
             });
           };
 
