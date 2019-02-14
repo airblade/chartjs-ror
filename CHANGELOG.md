@@ -3,6 +3,7 @@
 
 ## Unreleased
 
+- Add CSP nonce to inline JavaScript.
 - Do not modify options.
 
 
