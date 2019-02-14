@@ -1,7 +1,7 @@
 # CHANGELOG
 
 
-## Unreleased
+## 3.6.3 - 2019-02-14
 
 - Use Chart.js v2.7.3.
 - Add CSP nonce to inline JavaScript.
