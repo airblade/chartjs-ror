@@ -3,6 +3,7 @@
 
 ## Unreleased
 
+- Use Chart.js v2.7.3.
 - Add CSP nonce to inline JavaScript.
 - Do not modify options.
 
