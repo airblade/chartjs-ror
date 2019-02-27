@@ -8,25 +8,25 @@ module Chartjs
 
     module Explicit
       CHART_TYPES.each do |type|
-        define_method "chartjs_#{type}_chart" do |data, options = {}|    # def chartjs_polar_area_chart(data, options = {})
-          chart type, data, options                                      #   chart 'polar_area', data, options
-        end                                                              # end
+        define_method "chartjs_#{type}_chart" do |data, options = {}, plugins = {}|    # def chartjs_polar_area_chart(data, options = {}, plugins = {})
+          chart type, data, options, plugins                                           #   chart 'polar_area', data, options, plugins
+        end                                                                            # end
       end
       include Chartjs::ChartHelpers
     end
 
     module Implicit
       CHART_TYPES.each do |type|
-        define_method "#{type}_chart" do |data, options = {}|            # def polar_area_chart(data, options = {})
-          chart type, data, options                                      #   chart 'polar_area', data, options
-        end                                                              # end
+        define_method "#{type}_chart" do |data, options = {}, plugins = {}|            # def polar_area_chart(data, options = {}, plugins = {})
+          chart type, data, options, plugins                                           #   chart 'polar_area', data, options, plugins
+        end                                                                            # end
       end
       include Chartjs::ChartHelpers
     end
 
     private
 
-    def chart(type, data, options)
+    def chart(type, data, options, plugins)
       opts = options.dup
 
       @chart_id ||= -1
@@ -45,7 +45,8 @@ module Chartjs
             var chart = new Chart(ctx, {
               type:    "#{camel_case type}",
               data:    #{to_javascript_string data},
-              options: #{to_javascript_string opts}
+              options: #{to_javascript_string opts},
+              plugins: #{to_javascript_string plugins},
             });
           };
 
