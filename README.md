@@ -5,7 +5,7 @@ Simplifies using [Chart.js][] in Rails views.
 
 ## Current Chart.js version
 
-This gem includes [Chart.js v2.7.3](https://github.com/chartjs/Chart.js/tree/v2.7.3).
+This gem includes [Chart.js v2.8.0](https://github.com/chartjs/Chart.js/tree/v2.7.3).
 
 
 ## Installation
@@ -196,6 +196,21 @@ You can also use these non-Chart.js settings:
 
 The Javascript is actually written out on a single line but you get the idea.
 
+### Content Security Policy
+
+Chart.js provides an option to disable CSS injection to be compliant with strict Content Security Policies. To use it, you need to set the following initializer:
+
+```ruby
+# config/initializers/chartjs.rb
+Chartjs.disable_css_injection!
+```
+
+Additionally, you need to include the separate stylesheet provided by Chart.js:
+
+```scss
+// app/assets/stylesheets/application.scss
+@import 'Chart';
+```
 
 ## Intellectual Property
 
