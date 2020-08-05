@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = 'Simplifies using Chart.js in Rails'
   gem.summary       = 'Simplifies using Chart.js in Rails'
   gem.homepage      = 'https://github.com/airblade/chartjs-ror'
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
