@@ -30,10 +30,11 @@ module Chartjs
       opts = options.dup
 
       @chart_id ||= -1
-      element_id = opts.delete(:id)     || "chart-#{@chart_id += 1}"
-      css_class  = opts.delete(:class)  || 'chart'
-      width      = opts.delete(:width)  || '400'
-      height     = opts.delete(:height) || '400'
+      element_id            = opts.delete(:id)                    || "chart-#{@chart_id += 1}"
+      css_class             = opts.delete(:class)                 || 'chart'
+      width                 = opts.delete(:width)                 || '400'
+      height                = opts.delete(:height)                || '400'
+      disable_css_injection = Chartjs.disable_css_injection
 
       canvas = content_tag :canvas, '', id: element_id, class: css_class, width: width, height: height
 
@@ -49,6 +50,8 @@ module Chartjs
               plugins: #{to_javascript_string plugins},
             });
           };
+
+          Chart.platform.disableCSSInjection = #{disable_css_injection};
 
           if (typeof Chart !== "undefined" && Chart !== null) {
             initChart();
