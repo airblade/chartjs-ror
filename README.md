@@ -5,7 +5,7 @@ Simplifies using [Chart.js][] in Rails views.
 
 ## Current Chart.js version
 
-This gem includes [Chart.js v2.7.3](https://github.com/chartjs/Chart.js/tree/v2.7.3).
+This gem includes [Chart.js v3.6.0](https://github.com/chartjs/Chart.js/tree/v3.6.0).
 
 
 ## Installation
@@ -18,18 +18,10 @@ And then execute:
 
     $ bundle
 
-There are two builds of Chart.js: with or without Moment.js.
+After that require Chart:
 
-Choose the appropriate one in your javascript manifest:
-
-- Without Moment.js:
   ```javascript
   //= require Chart.min
-  ```
-
-- With Moment.js:
-  ```javascript
-  //= require Chart.bundle.min
   ```
 
 Please note Chart.js [no longer supports IE8 and below](https://github.com/chartjs/Chart.js/issues/2396#issuecomment-215233106).
