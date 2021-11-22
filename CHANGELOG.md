@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## 3.6.5 - 2021-11-19
+
+- Use Chart.js v3.6.0.
+
+
 ## 3.6.4 - 2019-02-27
 
 - Add argument for plugins.
