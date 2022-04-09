@@ -1,3 +1,3 @@
 module Chartjs
-  VERSION = "3.6.5"
+  VERSION = "3.7.1"
 end
