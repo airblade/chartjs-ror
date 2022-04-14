@@ -36,6 +36,7 @@ module Chartjs
       height     = opts.delete(:height) || '400'
 
       canvas = content_tag :canvas, '', id: element_id, class: css_class, width: width, height: height
+      container = content_tag :div, canvas, id: element_id + "-container", class: css_class, width: width, height: height
 
       script = javascript_tag(nonce: true) do
         <<-END.squish.html_safe
@@ -67,7 +68,7 @@ module Chartjs
         END
       end
 
-      canvas + script
+      container + script
     end
 
     # polar_area -> polarArea
