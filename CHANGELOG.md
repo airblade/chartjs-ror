@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 3.7.0 - 2025-08-24
+
+- Use Chart.js v4.5.0.
+
 ## 3.7.0 - 2022-04-08
 
 - Use Chart.js v3.7.1.
